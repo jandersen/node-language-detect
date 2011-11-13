@@ -1,0 +1,9 @@
+argv = ['/usr/local/bin/node-waf', 'configure']
+blddir = '/Users/jandersen/src/node-language-detector/build'
+commands = {'dist': 0, 'configure': True, 'distcheck': 0, 'install': 0, 'build': 0, 'clean': 0, 'distclean': 0, 'check': 0, 'uninstall': 0}
+cwd = '/Users/jandersen/src/node-language-detector'
+environ = {'TERM_SESSION_ID': '2F3EE586-E5B7-4E3A-8EBC-2509FBBDB2C8', 'SSH_AUTH_SOCK': '/tmp/launch-ptuUK2/Listeners', 'VERSIONER_PYTHON_PREFER_32_BIT': 'no', 'TERM_PROGRAM_VERSION': '299', 'SHELL': '/bin/bash', 'LOGNAME': 'jandersen', 'USER': 'jandersen', 'HOME': '/Users/jandersen', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/jandersen/bin/mongo/bin', 'DISPLAY': '/tmp/launch-R6cIA0/org.x:0', 'TMPDIR': '/var/folders/jb/sfd2477n5b77zyspb6fx2v340000gn/T/', 'TERM_PROGRAM': 'Apple_Terminal', 'LANG': 'en_US.UTF-8', 'TERM': 'xterm-256color', 'Apple_PubSub_Socket_Render': '/tmp/launch-0hj9VG/Render', 'NLTK_DATA': '/usr/share/nltk', 'VERSIONER_PYTHON_VERSION': '2.7', 'SHLVL': '1', 'OLDPWD': '/Users/jandersen/src', 'SECURITYSESSIONID': '186a5', '__CF_USER_TEXT_ENCODING': '0x1F5:0:0', 'PWD': '/Users/jandersen/src/node-language-detector', '_': '/usr/local/bin/node-waf', 'COMMAND_MODE': 'unix2003'}
+files = []
+hash = 0
+options = {'compile_targets': None, 'force': False, 'verbose': 0, 'nocache': False, 'progress_bar': 0, 'destdir': '', 'keep': False, 'zones': '', 'blddir': '', 'prefix': '/usr/local/', 'jobs': 4, 'srcdir': '', 'check_cxx_compiler': 'g++'}
+srcdir = '/Users/jandersen/src/node-language-detector/src'
