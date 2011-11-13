@@ -67,39 +67,23 @@ public:
       };
       
       struct language_baton_t {
-          LanguageDetector *hw;
-          v8::String::Utf8Value *str;
-          Persistent<Function> cb;
-          std::vector<language_record_t> languages;
-        };
-        
+            LanguageDetector *hw;
+            v8::String::Utf8Value *str;
+            Persistent<Function> cb;
+            std::vector<language_record_t> languages;
+          };
+      
+      
       static Handle<Value> Detect(const Arguments& args)
         {
           HandleScope scope;
-          
-          //REQ_FUN_ARG(0, str);
-          REQ_FUN_ARG(1, cb);
           
           v8::String::Utf8Value *v8str = new v8::String::Utf8Value(args[0]);
           
           LanguageDetector* hw = ObjectWrap::Unwrap<LanguageDetector>(args.This());
           language_baton_t *baton = new language_baton_t();
-          baton->cb = Persistent<Function>::New(cb);
           baton->str = v8str;
-          baton->hw = hw;
-          hw->Ref();
           
-          eio_custom(EIO_Detect, EIO_PRI_DEFAULT, EIO_AfterDetect, baton);
-
-          ev_ref(EV_DEFAULT_UC);
-
-          return Undefined();
-        }
-        
-        static int EIO_Detect(eio_req *req)
-          {
-            language_baton_t *baton = static_cast<language_baton_t *>(req->data);
-
             char *bytes = **baton->str;
             int numBytes = baton->str->length();
 
@@ -144,15 +128,6 @@ public:
                 baton->languages.push_back(newlang);
               }
 
-            return 0;
-          }
-
-          static int EIO_AfterDetect(eio_req *req)
-          {
-            HandleScope scope;
-            language_baton_t *baton = static_cast<language_baton_t *>(req->data);
-            ev_unref(EV_DEFAULT_UC);
-
             Local<Value> argv[1];
             Local<Array> array = Array::New(baton->languages.size());
             int count = 0;
@@ -165,22 +140,8 @@ public:
                 langDesc->Set(String::New("NormalizedScore"), Number::New(lang.normalized_score));
                 array->Set(Integer::New(count++), langDesc);
             }
-//            argv[0] = String::New(baton->languages.begin()->code.c_str());
-            argv[0] = array;
-            baton->hw->Unref();
-
-            TryCatch try_catch;
-
-            baton->cb->Call(Context::GetCurrent()->Global(), 1, argv);
-
-            if (try_catch.HasCaught()) {
-              FatalException(try_catch);
-            }
-
-            baton->cb.Dispose();
-
             delete baton;
-            return 0;
+            return array;
           }
     };
 
