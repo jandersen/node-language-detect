@@ -134,10 +134,10 @@ public:
             for(std::vector<language_record_t>::iterator iter = baton->languages.begin(); iter != baton->languages.end(); iter++) {
                 language_record_t lang = *iter;
                 Local<Object> langDesc = Object::New();
-                langDesc->Set(String::New("Name"), String::New(lang.name.c_str()));
-                langDesc->Set(String::New("Code"), String::New(lang.code.c_str()));
-                langDesc->Set(String::New("Percentile"), Number::New(lang.percent));
-                langDesc->Set(String::New("NormalizedScore"), Number::New(lang.normalized_score));
+                langDesc->Set(String::New("name"), String::New(lang.name.c_str()));
+                langDesc->Set(String::New("code"), String::New(lang.code.c_str()));
+                langDesc->Set(String::New("percentile"), Number::New(lang.percent));
+                langDesc->Set(String::New("normalizedScore"), Number::New(lang.normalized_score));
                 array->Set(Integer::New(count++), langDesc);
             }
             delete baton;
