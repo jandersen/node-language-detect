@@ -1,0 +1,28 @@
+{
+    "name" : "language-detect",
+    "version" : "0.0.1",
+    "description" : "Wrapper around Chromium Small Language Detector",
+    "main" : "./build/default/language-detect.node",
+    "repository" : {
+        "type" : "git",
+        "url" : "http://github.com/jandersen/node-language-detect.git"
+    },
+    "dependencies" : {
+    },
+    "devDependencies" : {
+    },
+    "script" : {
+    },
+    "keywords" : [
+        "nlp"
+    ],
+    "author" : {
+        "name" : "Jesper Andersen",
+        "email" : "node@jesperandersen.net",
+        "url" : "http://jesperandersen.net"
+    },
+    "license" : "Apache",
+    "engine" : {
+        "node" : ">=0.4.0"
+    }
+}
